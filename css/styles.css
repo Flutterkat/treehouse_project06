@@ -86,6 +86,7 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  transition: all .7s ease-in;
 }
 
 .space {
@@ -111,7 +112,7 @@ button {
   color: #FFFFFF;
 }
 
-.btn__reset {
+.btn__reset, .retry {
   padding: 8px;
   margin: 50px auto;
   background: #FFFFFF;
