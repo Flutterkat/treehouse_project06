@@ -1,5 +1,4 @@
 const qwerty = document.getElementById('qwerty');
-const phrase = document.getElementById('phrase');
 const overlay = document.getElementById('overlay');
 const buttons = document.getElementsByTagName('button');
 const ul = document.querySelector('ul');
@@ -7,15 +6,14 @@ const letterLength = document.getElementsByClassName('letter')
 const show = document.getElementsByClassName('show');
 const h2 = document.createElement('h2');
 const btn_retry = document.createElement('a');
-const retry = document.getElementsByClassName('.retry');
 const tries = document.querySelectorAll('.tries');
 let answer = '';
-let missed = -1;
+let missed = -1; //missed is set to -1 so that it can be used as an array selector for 'const tries[missed]'.
 let letter = ul.children;
 let phrases = ["Summer Nights", "Friends in Low Places", "All My Exs Live in Texas", "Going Through the Big D", "I Love This Bar"];
 
 
-//removes all 'li' elements that make up phrase.
+//removes all 'li' elements that make up the on screen phrase.
 const removeChilds = () => {
     while (ul.lastChild) {
         ul.removeChild(ul.lastChild);
@@ -23,7 +21,13 @@ const removeChilds = () => {
 };
 
 //resets the on-screen keyboard back to default/start position.
+//first loop runs if statement on disabled buttons and sets disabled to false.
+//second loop removes the 'chosen' class name from each button.
 const resetQwerty = () => {
+    for (i = 0; i < buttons.length; i++)
+    if (buttons[i].disabled = 'true') {
+        buttons[i].disabled = false;
+        } else {}
     for (i = 0; i < buttons.length; i++)
     buttons[i].className = '';
 }
@@ -67,7 +71,6 @@ overlay.addEventListener('click', (e) => {
 function addPhraseToDisplay(argument) {
     for (i = 0; i<argument.length; i++) {
         const li = document.createElement('li');
-        const ul = document.querySelector('ul');
         li.textContent = argument[i];
         ul.appendChild(li);
         if (argument[i] !== ' ') {
@@ -112,6 +115,7 @@ const checkLetter = (argument) => {
 qwerty.addEventListener('click', (e) => {
     if (e.target.tagName === 'BUTTON') {
         e.target.className = 'chosen';
+        e.target.disabled = true;
         checkLetter(e.target.textContent);
         let letterFound = answer;
         if (letterFound === null) {
