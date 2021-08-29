@@ -35,7 +35,7 @@ const resetQwerty = () => {
 //resets heart images back to default/start position.
 const resetTries = () => {
     for (i = 0; i < tries.length; i++)
-    tries[i].firstChild.src = 'images/liveheart.png';
+    tries[i].firstChild.src = 'images/liveHeart.png';
 }
 
 //on click of retry button, resets the game after a player wins/loses using above functions.
@@ -120,7 +120,7 @@ qwerty.addEventListener('click', (e) => {
         let letterFound = answer;
         if (letterFound === null) {
             missed++;
-            tries[missed].firstChild.src = 'images/lostheart.png';
+            tries[missed].firstChild.src = 'images/lostHeart.png';
         }
     }
     checkWin();
